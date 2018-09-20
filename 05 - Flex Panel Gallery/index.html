@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Flex Panel Gallery</title>
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+  <div class="panels">
+    <div class="panel panel1">
+      <p>Human</p>
+      <p>Nature</p>
+      <p>Changes</p>
+    </div>
+    <div class="panel panel2">
+      <p>Time</p>
+      <p>Doesn't</p>
+      <p>Stop us</p>
+    </div>
+    <div class="panel panel3">
+      <p>We</p>
+      <p>Make</p>
+      <p>Them</p>
+    </div>
+    <div class="panel panel4">
+      <p>Ignore</p>
+      <p>The</p>
+      <p>Limits</p>
+    </div>
+    <div class="panel panel5">
+      <p>Set the</p>
+      <p>Rules</p>
+      <p>Yourself</p>
+    </div>
+  </div>
+  <script>
+    const panels = document.querySelectorAll('.panel');
+
+    function toggleOpen() {
+      this.classList.toggle('open');
+    }
+
+    function toggleActive(e) {
+      if (e.propertyName.includes('flex-grow')) {
+        this.classList.toggle('open-active');
+      }
+    }
+
+    function enableColour() {
+      this.classList.add('enable-color');
+    }
+
+    panels.forEach(panel => {
+      panel.addEventListener('click', toggleOpen)
+      panel.addEventListener('transitionend', toggleActive)
+      panel.addEventListener('mouseover', enableColour)
+    })
+
+  </script>
+</body>
+</html>

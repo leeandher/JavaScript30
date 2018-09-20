@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DevTooling</title>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="text"onClick="spin()">
+      Today's JS30 challenge is just to explore the DevTools a little bit more.<br />
+      Check out the console for a detailed explanation.  <br /><br />
+      <em>(Ctrl/Cmd + Shift + I, then select 'Console')</em>
+    </divs>
+  </div>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=Ubuntu+Mono');
+    * {
+      margin: 0;
+      font-family: 'Ubuntu Mono';
+      overflow: hidden;
+    }
+    body {
+      text-align: center;
+    }
+    .wrapper {
+      display: flex;
+      flex-direction: row wrap;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: paleturquoise;
+    }
+    .text {
+      transition: 0.5s;
+      position: relative;
+      padding: 25px;
+      background-color: rgba(0,0,0,0.6);
+      color: white;
+      font-size: 25px;
+      flex: 1;
+      margin: 20% 10%;
+      transition: all 0.03s;
+    }
+    .text:hover {
+      cursor: pointer;
+    }
+  </style>
+
+  <script>
+    const pageText = document.querySelector('.text');
+    const dogs = [{ name: 'Snickers', age: 2 }, { name: 'Hugo', age: 8 }];
+
+    function spin() {
+      if (pageText.style.transform === 'rotate(360deg)') pageText.style.transform = 'rotate(0deg)';
+      else console.log(pageText.style.transform = 'rotate(360deg)');
+    }
+    // Clearing
+    console.clear();
+    console.log('The console.clear() command clears the messages in the console.')
+
+    // Regular
+    console.log('This is a regular console.log()')
+
+    // Interpolated
+    console.log('This is an %s console.log()', 'interpolated')
+
+    // Styled
+    console.log('%c This is a styled console.log()', 'text-shadow: 0 0 3px lightgreen; font-weight: bold; font-style: italic;')
+
+    // Warning
+    console.warn('This is a console.warn() warning message. It displays warnings about the program or it\'s components')
+
+    // Error
+    console.error('This is a console.error() error message! It displays information about an error, but does not stop running.')
+
+    // Info
+    console.info('This is a console.info() info message. It provides information about the program.')
+
+    // Testing
+    console.assert(pageText.classList.contains('title'), 'This is a console.assert() test error message! It checks a condition, and only displays if false.')
+
+    // Viewing DOM Elements
+    console.log('Using console.dir() on a DOM element will return all it\'s available methods/properties.')
+    console.dir(pageText)
+
+    // Grouping
+    console.log('Using console.group(groupName) or console.groupCollapsed(groupName), followed by console.groupEnd(groupName) will group the console messages between.')
+    dogs.forEach(dog => {
+      console.group(`${dog.name}`)
+      console.log(`This is ${dog.name}`);
+      console.log(`${dog.name} is ${dog.age} years old`)
+      console.log(`${dog.name} is ${dog.age*7} years old in dog years`)
+      console.groupEnd(`${dog.name}`)
+    })
+
+    // Counting
+    console.log('The console.count() method counts the number of times a counted log message has been run.')
+    console.count('This is a test message')
+    console.count('This is a test message')
+    console.count('This is a test message')
+
+    // Timing
+    console.log('The console.time(timerName) method starts a timer, which is displayed once console.timeEnd(timerName) is called.')
+    console.time('Fetching GitHub User Data')
+    fetch('https://api.github.com/users/leeandher')
+      .then(data => data.json())
+      .then(data => {
+        console.timeEnd('Fetching GitHub User Data')
+        console.log(JSON.stringify(data));
+      });
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Magic Marker</title>
+</head>
+<body>
+<canvas id="draw" width="800" height="800"></canvas>
+
+<script>
+
+  //Setting up the page and canvas
+  const canvas = document.querySelector('#draw');
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  ctx.strokeStyle = '#4DCCB0';
+  ctx.lineJoin = 'round';
+  ctx.lineCap = 'round';
+  ctx.globalCompositeOperation = 'source-over';
+
+  //Initial drawing variables
+  let isDrawing = false;
+  let lastX = 0;
+  let lastY = 0;
+  let hue = 0;
+  let brushSize = 25;
+  let direction = true;
+
+  function draw(e) {
+    if (!isDrawing) return; //Stops function if they are not drawing
+
+    //Start from here:
+    ctx.beginPath();
+    ctx.moveTo(lastX, lastY);
+
+    //Move to here:
+    ctx.lineTo(e.offsetX, e.offsetY);
+
+    /**CODE FOR SPEED BASED THICKNESS**/
+    // let x2 = Math.pow(e.offsetX-lastX, 2);
+    // let y2 = Math.pow(e.offsetY-lastY, 2);
+    // let r = Math.pow(x2+y2, 0.5);
+    // ctx.lineWidth = r*0.5;
+
+    //Modify the colour of the brush
+    ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
+
+    //Modify the size of the brush
+    ctx.lineWidth = brushSize;
+
+    //Draw the line
+    ctx.stroke();
+
+    //Change direction based on brushSize
+    if (brushSize > 75 || brushSize < 25) direction = !direction;
+
+    [lastX, lastY] = [e.offsetX, e.offsetY]; //Reset the starting coordinates
+    direction ? brushSize++ : brushSize--; //Increase/decrease brushSize
+    hue++; //Change the brush colour on movement
+  }
+
+  //Event Listeners
+  canvas.addEventListener('mousedown', (e) => {
+    isDrawing = true;
+    [lastX, lastY] = [e.offsetX, e.offsetY];
+  });
+  canvas.addEventListener('mousemove', draw);
+  canvas.addEventListener('mouseup', () => isDrawing = false);
+  canvas.addEventListener('mouseout', () => isDrawing = false);
+
+</script>
+
+<style>
+  body {
+    margin:0;
+    overflow: hidden;
+  }
+</style>
+
+</body>
+</html>

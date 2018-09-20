@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JS References vs. Copies</title>
+</head>
+<body>
+  <h2><em>Psst: It's best to look at the source code, but the JS console is second best.</em></h2>
+  <style>
+    html {
+      background: black;
+      color: lime;
+      font-family: monospace;
+    }
+
+    table {
+      border: 1px dashed lime;
+      border-collapse: collapse;
+    }
+
+    th {
+      padding: 5px;
+      border: 1px dashed lime;
+    }
+
+    td {
+      padding: 5px;
+      border: 1px dashed lime;
+    }
+  </style>
+  <script>
+
+    //Function to create text line from any variable
+    function createText(text) {
+      document.body.appendChild(document.createElement('br'));
+      document.body.appendChild(document.createTextNode(text));
+      document.body.appendChild(document.createElement('br'));
+    }
+
+
+    //Strings test
+    console.log('String Test');
+    let string1 = 'Test Phrase';
+    let string2 = string1;
+    console.log('Initial:', string1, string2);
+    string1 = 'New Test Phrase';
+    console.log('Changed:', string1, string2);
+    //Therefore, strings are copied
+    createText('Via the strings test, strings are copied when declared relatively');
+
+
+    //Numbers test
+    let number1 = 1027;
+    let number2 = number1;
+    console.log('Initial:', number1, number2);
+    number1 = 0721;
+    console.log('Changed:', number1, number2);
+    //Therefore, numbers are copied
+    createText('Via the numbers test, numbers are copied when declared relatively');
+
+
+    //Booleans test
+    console.log('Boolean Test');
+    let bool1 = true;
+    let bool2 = bool1;
+    console.log('Initial:', bool1, bool2);
+    bool1 = false;
+    console.log('Changed:', bool1, bool2);
+    //Therefore, booleans are copied
+    createText('Via the booleans test, booleans are copied when declared relatively');
+
+
+    // Array test
+    console.log('Array Test');
+    const array1 = ['HTML', 'CSS', 'JavaScript', 'PHP'];
+    const array2 = array1;
+    console.log('Initial:', array1, array2);
+    array1[3] = 'Ruby';
+    console.log('Changed:', array1, array2);
+    //Therefore, arrays are referenced
+    createText('However, via the array test, arrays are referenced when declared relatively')
+
+    //In order to make a copy of an array we can do any of the following methods
+    createText('In order to copy an array, instead of referencing it, we can use the table outlined in the JS console.');
+
+    const array3 = array1.slice();
+    const array4 = [].concat(array1);
+    const array5 = [...array1];
+    const array6 = Array.from(array1);
+
+    displayArrayCopying = [
+      {code:'array1.slice()', description:'Using the slice Array method'},
+      {code:'[].concat(array1)', description:'Using the concat Array method on an empty array'},
+      {code:'[...array1]', description:'Using the ES6 spread operator on an empty array'},
+      {code:'Array.from(array1)', description: 'Using the  Array global object from method'}
+    ]
+    console.warn('To copy an array, use the following')
+    console.table(displayArrayCopying)
+
+
+    // Object test
+    console.log('Object Test');
+    const object1 = {
+      name: 'Leander',
+      age: 19
+    };
+    const object2 = object1;
+    console.log('Initial:', object1, object2);
+    object1.name = 'Leander Rodrigues';
+    console.log('Changed:', object1, object2);
+    //Therefore, objects are referenced
+    createText('However, via the object test, objects are referenced when declared relatively')
+
+    //In order to make a copy of an array we can do any of the following method
+    createText('In order to copy an array, instead of referencing it, we can use the Object.assign method');
+    object3 = Object.assign({}, object1, {newProp: 'New Prop Value'});
+    console.warn('To copy the array (1 level deep), use the following:')
+    console.log('Object.assign({}, object1, {newProp: "newPropValue"})')
+
+    createText('This however, only works one level deep. To create a deeper clone, you must use a cloneDeep method, or use the JSON methods (however, this may have performance issues)')
+    const deepObj1 = {
+      name: 'Leander',
+      age: 19,
+      social: {
+        twitter: '@LeeAndHer'
+      }
+    }
+    const deepObj2 = Object.assign({}, deepObj1);
+    console.log('Initial:', deepObj1, deepObj2);
+    deepObj2.social.twitter = '@leeandher';
+    console.log('Changed:', deepObj1, deepObj2);
+
+    console.warn('deepObj3, has been created using the following methods such that it is independent of deepObj1 and deepObj2:');
+    console.log('JSON.parse(JSON.stringify(deepObj1))');
+
+    //Using JSON methods, a deep copy can be made, but it may have performance issues
+    const deepObj3 = JSON.parse(JSON.stringify(deepObj1));
+
+  </script>
+
+</body>
+</html>

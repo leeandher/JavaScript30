@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css?family=Cutive+Mono|Comfortaa');
+
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.background {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background: #0F0F0F no-repeat center center fixed;
+  background-size: cover;
+  background-image: url('images/bg.jpg');
+  -webkit-filter: blur(2px) grayscale(1) brightness(0.5);
+  filter: blur(2px) grayscale(1) brightness(0.5);
+}
+
+.keys {
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  width: 100%;
+}
+
+.key {
+  display: inline-block;
+  -webkit-transition: all 0.075s;
+  transition: all 0.075s;
+  text-align: center;
+  width: 100px;
+  height: 100px;
+  margin: 10px;
+  border: 2px solid white;
+  font-weight: bold;
+  padding-top: 15px;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.5)
+}
+
+.key:hover {
+    cursor: pointer;
+}
+.key kbd {
+  font-size: 40px;
+  font-family: 'Cutive Mono';
+  margin-top: 20px;
+  color: white;
+}
+
+.key span {
+  font-size: 15px;
+  text-transform: uppercase;
+  display: block;
+  color: greenyellow;
+  text-align: center;
+  font-family: 'Comfortaa';
+}
+
+.playing {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+  border-color: greenyellow;
+  -webkit-box-shadow: 0 0 10px greenyellow;
+  box-shadow: 0 0 10px greenyellow;
+}

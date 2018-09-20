@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Array Cardio (Day 2)</title>
+</head>
+<body>
+  <h2><em>Psst: have a look at the JavaScript Console again</em></h2>
+  <style>
+    html {
+      background: black;
+      color: lime;
+      font-family: monospace;
+    }
+
+    table {
+      border: 1px dashed lime;
+      border-collapse: collapse;
+    }
+
+    th {
+      padding: 5px;
+      border: 1px dashed lime;
+    }
+
+    td {
+      padding: 5px;
+      border: 1px dashed lime;
+    }
+  </style>
+  <script>
+    // ## Array Cardio Day 2
+
+    //Function to create data table from 1D arrays
+    function createTable(tableData, desc) {
+      document.body.appendChild(document.createElement('br'));
+      const description = document.createTextNode(desc)
+      document.body.appendChild(description);
+      //Create table and body
+      const table = document.createElement('table');
+      const tableBody  = document.createElement('tbody');
+      //Create header row
+      const headRow = document.createElement('tr');
+        //Create INDEX header
+        const headIndex = document.createElement('th');
+        headIndex.appendChild(document.createTextNode('INDEX'));
+        headRow.appendChild(headIndex);
+        //Create DATA header
+        const headData = document.createElement('th');
+        headData.appendChild(document.createTextNode('DATA'));
+        headRow.appendChild(headData);
+      //Add headers to table
+      tableBody.appendChild(headRow);
+      //Append each array entry and index to new row
+      tableData.forEach( (data, index) => {
+        const row = document.createElement('tr');
+        //Create index cell
+        const indexCell = document.createElement('td');
+        indexCell.appendChild(document.createTextNode(index));
+        row.appendChild(indexCell);
+        //Create data cell
+        const dataCell = document.createElement('td');
+        //if (typeof data === 'object') data = Object.values(data);
+        dataCell.appendChild(document.createTextNode(JSON.stringify(data, null, 2)));
+        row.appendChild(dataCell);
+        //Add row to table
+        tableBody.appendChild(row);
+      });
+      //Add table to body
+      table.appendChild(tableBody);
+      document.body.appendChild(table);
+      document.body.appendChild(document.createElement('br'));
+    }
+
+    //Function to create text line from any variable
+    function createText(text) {
+      document.body.appendChild(document.createElement('br'));
+      document.body.appendChild(document.createTextNode(text));
+      document.body.appendChild(document.createElement('br'));
+    }
+
+    //Source data to work with
+    const people = [
+      { name: 'Wes', year: 1988 },
+      { name: 'Kait', year: 1986 },
+      { name: 'Irv', year: 1970 },
+      { name: 'Lux', year: 2015 }
+    ];
+    createTable(people, "SOURCE DATA: PEOPLE ARRAY")
+
+    const comments = [
+      { text: 'Love this!', id: 523423 },
+      { text: 'Super good', id: 823423 },
+      { text: 'You are the best', id: 2039842 },
+      { text: 'Ramen is my fav food ever', id: 123523 },
+      { text: 'Nice Nice Nice!', id: 542328 }
+    ];
+    createTable(comments, "SOURCE DATA: COMMENTS ARRAY")
+
+    const now = new Date();
+    console.log(`It is currently: ${now}`);
+    createText(`It is currently: ${now}`);
+
+    // Array.prototype.some()
+    // 1. Is at least one person 19 or older?
+    const someNineteen = people.some(person => now.getFullYear()-person.year >= 19);
+    console.log(someNineteen ? "Atleast one person is 19 or older" : "No one is 19 or older");
+    createText(`Using Array.prototype.some(): Is atleast one person 19 or older? ${someNineteen}`);
+
+    // Array.prototype.every()
+    // 2. Is everyone 19 or older?
+    const everyNineteen = people.every(person => now.getFullYear()-person.year >= 19);
+    console.log(everyNineteen ? "Everyone is older than 19" : "Not everyone is older than 19");
+    createText(`Using Array.prototype.every(): Is everyone 19 or older? ${everyNineteen}`);
+
+    // Array.prototype.find()
+    // 3. Find the comment with the ID of 823423
+    const findCommentId = comments.find(comment => comment.id===823423);
+    console.log(`Comment with an ID of 823423: ${JSON.stringify(findCommentId)}`)
+    createText(`Using Array.prototype.find(): Find comment with the ID of 823423. ${JSON.stringify(findCommentId)}`)
+    // Array.prototype.findIndex()
+    // 4. Delete the comment with the ID of 823423
+    const findCommentIndex = comments.findIndex(comment => comment.id===823423);
+    console.log(`Index ${findCommentIndex} has been deleted from comments array.`)
+    delete(comments[findCommentIndex]);
+    createText(`Using Array.prototype.findIndex(): Delete comment with the ID of 823423. Index ${findCommentIndex} has been deleted from comments array.`)
+    console.table(comments)
+    createTable(comments, `SOURCE DATA: NEW COMMENTS ARRAY`)
+    //
+
+
+    // Array.prototype.filter()
+    // 1. Filter the list of inventors for those who were born in the 1500's
+    // const fifteen = inventors.filter( inventor => inventor.year >= 1500 && inventor.year < 1600 );
+    // console.log("The inventors array filtered for those born in the 1500's");
+    // console.table(fifteen);
+    // createTable(fifteen, "The inventors array filtered for those born in the 1500's");
+
+  </script>
+</body>
+</html>

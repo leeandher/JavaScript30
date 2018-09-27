@@ -1,14 +1,16 @@
+@import url('https://fonts.googleapis.com/css?family=Monoton|Muli');
 
 html {
   box-sizing: border-box;
-  background:url('http://wes.io/hx9M/oh-la-la.jpg') center no-repeat;
+  background:url('clubbing.png') center no-repeat;
   background-size:cover;
   min-height:100vh;
   display:flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  font-family: Futura,"Trebuchet MS",Arial,sans-serif;
+  color: white;
+  font-family: 'Muli';
 }
 *, *:before, *:after {box-sizing: inherit; }
 
@@ -16,7 +18,7 @@ svg {
   fill:white;
   background: rgba(0,0,0,0.1);
   padding: 20px;
-  border-radius: 50%;
+  border-radius: 25px;
   width:200px;
   margin-bottom: 50px;
 }
@@ -24,16 +26,19 @@ svg {
 .wrapper {
   padding: 20px;
   max-width: 350px;
-  background: rgba(255,255,255,0.95);
-  box-shadow: 0 0 0 10px rgba(0,0,0,0.1);
+  background: rgba(34, 34, 34, 0.95);
+  box-shadow: 0 0 0 10px rgba(255,255,255,0.4);
 }
 
-h2 {
+h1 {
   text-align: center;
   margin: 0;
   font-weight: 200;
+  font-family: 'Monoton'
 }
-
+h1 span {
+  color: rgb(138, 77, 236);
+}
 .plates {
   margin: 0;
   padding: 0;
@@ -42,7 +47,7 @@ h2 {
 }
 
 .plates li {
-  border-bottom: 1px solid rgba(0,0,0,0.2);
+  border-bottom: 1px solid rgba(255,255,255,0.2);
   padding: 10px 0;
   font-weight: 100;
   display: flex;
@@ -59,12 +64,12 @@ h2 {
 }
 
 .plates input + label:before {
-  content: '⬜️';
+  content: '🔲';
   margin-right: 10px;
 }
 
 .plates input:checked + label:before {
-  content: '🌮';
+  content: '🎵';
 }
 
 .add-items {
@@ -74,18 +79,38 @@ h2 {
 .add-items input {
   padding:10px;
   outline:0;
-  border:1px solid rgba(0,0,0,0.1);
+  border-radius: 4px;
+  color: inherit;
+  background-color: rgba(0,0,0,0.1);
+  border: 1px solid rgba(255,255,255,0.4);
+}
+
+.add-items input:hover {
+  background-color: rgba(255,255,255,0.2);
+  transition: background-color 0.2s linear;  
 }
 
 .change-list {
   padding: 10px 12px;
-  margin: 20px 5px;
-  background-color: rgb(4, 77, 145);
-  border: 0;
+  margin: 20px 3px;
+  border: 2px solid rgb(5, 114, 216);
+  background-color: rgba(0,0,0,0.1);
   color: rgb(255, 255, 255);
   border-radius: 4px;
 }
+.change-list:hover {
+  background-color: rgb(5, 114, 216);
+  transition: background-color 0.2s linear;
+}
 
 .change-list#delete {
-  background-color: rgb(153, 4, 4);  
+  border: 2px solid rgb(204, 4, 4); 
+}
+
+.change-list#delete:hover {
+  background-color: rgb(204, 4, 4);;
+}
+
+input, button {
+  font-family: 'Muli';
 }

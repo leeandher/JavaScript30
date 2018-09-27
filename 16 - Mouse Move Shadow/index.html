@@ -2,25 +2,27 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Mouse Shadow</title>
+  <title>Wiggle Wiggle Wiggle</title>
 </head>
 <body>
 
-  <div class="hero">
-    <h1 contenteditable>🔥WOAH!</h1>
+  <div class="main">
+    <h1 contenteditable>Manners <br>maketh <br>man.</h1>
   </div>
 
   <style>
+  @import url('https://fonts.googleapis.com/css?family=Kanit');
+
   html {
     color:black;
-    font-family: sans-serif;
+    font-family: Kanit, sans-serif;
   }
 
   body {
     margin: 0;
   }
 
-  .hero {
+  .main {
     min-height: 100vh;
     display:flex;
     justify-content: center;
@@ -31,10 +33,43 @@
   h1 {
     text-shadow: 10px 10px 0 rgba(0,0,0,1);
     font-size: 100px;
+    text-align: center;
   }
   </style>
 
 <script>
+
+  const main = document.querySelector('.main');
+  const text = main.querySelector('h1');
+  const walk = 20; //100 p
+
+  function colorize(e) {
+    const { offsetWidth: width, offsetHeight: height } = main;
+    let {offsetX: x, offsetY: y} = e;
+
+    if (this!== e.target) {
+      x += e.target.offsetLeft;
+      y += e.target.offsetTop;
+    }
+
+    const xWalk = Math.round((x / width * walk) - (walk / 2));
+    const yWalk = Math.round((y / height * walk) - (walk / 2));
+
+    text.style.textShadow = `
+      ${xWalk}px ${yWalk}px 8px paleturquoise,
+      ${-xWalk}px ${yWalk}px 8px palevioletred,
+      ${yWalk}px ${-xWalk}px 8px palegoldenrod,
+      ${-yWalk}px ${xWalk}px 8px palegreen
+    `;
+
+    const movementColor = `rgba(${15},${x/width*15},  ${y/width*15})`;
+    text.style.color = movementColor;
+    main.style.backgroundColor = movementColor;
+
+  }
+
+  main.addEventListener('mousemove', colorize);
+
 </script>
 </body>
 </html>

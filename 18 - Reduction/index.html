@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Videos</title>
+  <title>Reduction</title>
 </head>
 <body>
   <ul class="videos">
@@ -182,25 +182,26 @@
     </li>
   </ul>
 <script>
-
+  //Converting the time nodes from a NodeList to an Array
   const timeNodes = Array.from(document.querySelectorAll('[data-time]'));
 
+  //Using the Array.map() function
   const seconds = timeNodes
     .map(node => node.dataset.time)
     .map(timeCode => {
       const [mins, secs] = timeCode.split(':').map(parseFloat);
-      return (mins * 60) + secs;
+      return mins*60 + secs;
     })
-    .reduce((total, vidSeconds) => total + vidSeconds);
+    .reduce((total, seconds) => total + seconds)
 
-    let secondsLeft = seconds;
-    const hours = Math.floor(secondsLeft / 3600);
-    secondsLeft = secondsLeft % 3600;
+  //Compute the total time in regular units
+  let secondsLeft = seconds;
+  const hours = Math.floor(secondsLeft / 3600);
+  secondsLeft = secondsLeft % 3600;
+  const minutes = Math.floor(secondsLeft / 60);
+  secondsLeft = secondsLeft % 60;
+  console.log(`${hours}h ${minutes}m ${secondsLeft}s`)
 
-    const mins = Math.floor(secondsLeft / 60);
-    secondsLeft = secondsLeft % 60;
-
-    console.log(hours, mins, secondsLeft);
 
 </script>
 </body>

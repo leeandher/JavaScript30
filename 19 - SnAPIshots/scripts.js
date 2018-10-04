@@ -31,9 +31,9 @@ function drawVideo() {
         //Alter the image data
 
         // pixels = redEffect(pixels);
-        // pixels = rgbSplit(pixels);
-        // ctx.globalAlpha = 0.1;
-        pixels = greenScreen(pixels);
+        pixels = rgbSplit(pixels);
+        ctx.globalAlpha = 0.1;
+        // pixels = greenScreen(pixels);
 
         //Replace with altered image data
         ctx.putImageData(pixels, 0, 0);

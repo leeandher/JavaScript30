@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Step Up to the Mic</title>
+</head>
+<body>
+
+  <div class="words" contenteditable>
+    <h3 title="Try saying some common colours, or 'spin', 'reverse', or 'disappear'">Let's see whatchu got kid.</h3>
+  </div>
+
+<script>
+
+  window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+  const recognition = new SpeechRecognition();
+  recognition.interimResults = true;
+  recognition.lang = 'en-US';
+
+
+  let p = document.createElement('p');
+  const words = document.querySelector('.words')
+  const bg = document.querySelector('body');
+  words.appendChild(p);
+
+  recognition.addEventListener('result', e => {
+    const transcript = Array.from(e.results)
+      .map(result => result[0])
+      .map(result => result.transcript)
+      .join('')
+
+    p.textContent = transcript;
+    parseTranscript(transcript);
+
+    if (e.results[0].isFinal) {
+      p = document.createElement('p');
+      words.appendChild(p);
+    }
+  });
+
+  function parseTranscript(transcript) {
+    //Actions
+    if (transcript.includes('spin')) words.style.transform = "rotate(360deg)";
+    if (transcript.includes('reverse')) words.style.transform = "rotateY(180deg)";
+    if (transcript.includes('stop')) words.style.transform = "rotate(0deg)";
+    if (transcript.includes('disappear')) bg.style.display = "none";
+    if (transcript.includes('come back')) bg.style.display = "initial";
+
+    //Colours
+    if (transcript.includes('red')) bg.style.backgroundColor = "palevioletred";
+    if (transcript.includes('yellow')) bg.style.backgroundColor = "palegoldenrod";
+    if (transcript.includes('green')) bg.style.backgroundColor = "palegreen";
+    if (transcript.includes('blue')) bg.style.backgroundColor = "paleturquoise";
+    if (transcript.includes('purple')) bg.style.backgroundColor = "violet";
+    if (transcript.includes('orange')) bg.style.backgroundColor = "orange";
+    if (transcript.includes('pink')) bg.style.backgroundColor = "pink";
+    if (transcript.includes('black')) bg.style.backgroundColor = "black";
+    if (transcript.includes('white')) bg.style.backgroundColor = "white";
+    if (transcript.includes('grey')) bg.style.backgroundColor = "dimgrey";
+
+    //People
+    if (transcript.includes('Leander')) bg.style.backgroundColor = "#B4D455";
+    if (transcript.includes('j o r d i n e')) bg.style.backgroundColor = "#00CCCC";
+  }
+
+  recognition.addEventListener('end', recognition.start)
+  recognition.start();
+
+</script>
+
+
+  <style>
+    html {
+      font-size: 10px;
+    }
+
+    body {
+      background:dimgrey;
+      font-family: 'helvetica';
+      font-weight: 200;
+      transition: all 1s linear;
+      font-size: 20px;
+    }
+    h3 {
+      text-align: center;
+    }
+
+    .words {
+      max-width:500px;
+      margin:50px auto;
+      transition: all 1s linear;
+      background:white;
+      border-radius:5px;
+      box-shadow:10px 10px 0 rgba(0,0,0,0.1);
+      padding:1rem 2rem 1rem 5rem;
+      background: -webkit-gradient(linear, 0 0, 0 100%, from(#d9eaf3), color-stop(4%, #fff)) 0 4px;
+      background-size: 100% 3rem;
+      position: relative;
+      line-height:3rem;
+    }
+    p {
+      margin: 0 0 3rem;
+    }
+
+    .words:before {
+      content: '';
+      position: absolute;
+      width: 4px;
+      top: 0;
+      left: 30px;
+      bottom: 0;
+      border: 1px solid;
+      border-color: transparent #efe4e4;
+    }
+  </style>
+
+</body>
+</html>

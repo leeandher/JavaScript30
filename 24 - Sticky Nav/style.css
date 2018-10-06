@@ -96,3 +96,7 @@ nav a {
 .fixed-nav li.logo {
   max-width: 200px;
 }
+
+.fixed-nav .site-wrap {
+  transform: scale(1);
+}

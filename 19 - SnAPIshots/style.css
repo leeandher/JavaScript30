@@ -2,39 +2,84 @@ html {
   box-sizing: border-box;
 }
 
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: inherit;
 }
 
 html {
-  font-size: 10px;
-  background:#ffc600;
+  font-size: 15px;
+  background: url(photo_bg.jpeg) no-repeat center center fixed;
+  background-size: cover;
+  font-family: "KoHo";
 }
 
 .photobooth {
-  background:white;
-  max-width:150rem;
+  max-width: 150rem;
   margin: 2rem auto;
-  border-radius:2px;
+  border-radius: 2px;
+  text-align: center;
 }
 
 /*clearfix*/
 .photobooth:after {
-  content: '';
+  content: "";
   display: block;
   clear: both;
 }
 
+.effects {
+  padding: 3px 8px;
+  margin-bottom: 20px;
+  text-align: left;
+  border-radius: 10px;
+  font-size: 14px;
+  font-family: inherit;
+}
+.controls {
+  transition: max-height 0.5s ease-in-out;
+  max-height: 0;
+  overflow: hidden;
+}
+
+.trigger {
+  display: block;
+  text-align: center;
+  margin: 15px auto;
+  padding: 6px 25px;
+  background: transparent;
+  border: 1px solid #575757;
+  font-family: inherit;
+  transition: all 0.1s linear;
+  font-size: 18px;
+  border-radius: 8px;
+}
+.trigger:hover {
+  box-shadow: 0 0 10px #575757;
+  border: 1px solid transparent;
+  background-color: #ffffff;
+  cursor: pointer;
+}
+
 .photo {
-  width:100%;
-  float:left;
+  width: 85%;
+  max-width: 1000px;
+  text-align: center;
+  background: white;
+  margin: 0 auto;
+  border: 0px solid dimgrey;
+  box-sizing: content-box;
+  box-shadow: 2px 2px 10px silver;
+  padding: 20px 20px 80px 20px;
 }
 
 .player {
+  display: none;
   position: absolute;
-  top:20px;
+  top: 20px;
   right: 20px;
-  width:200px;
+  width: 200px;
 }
 
 /*
@@ -42,18 +87,28 @@ html {
 */
 
 .strip {
-  padding:2rem;
+  padding: 2rem;
 }
 .strip img {
-  width:100px;
+  width: 100px;
   overflow-x: scroll;
-  padding:0.8rem 0.8rem 2.5rem 0.8rem;
-  box-shadow:0 0 3px rgba(0,0,0,0.2);
-  background:white;
+  padding: 0.8rem 0.8rem 2.5rem 0.8rem;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+  background: white;
 }
 
-.strip a:nth-child(5n+1) img { transform: rotate(10deg); }
-.strip a:nth-child(5n+2) img { transform: rotate(-2deg); }
-.strip a:nth-child(5n+3) img { transform: rotate(8deg); }
-.strip a:nth-child(5n+4) img { transform: rotate(-11deg); }
-.strip a:nth-child(5n+5) img { transform: rotate(12deg); }
+.strip a:nth-child(5n + 1) img {
+  transform: rotate(10deg);
+}
+.strip a:nth-child(5n + 2) img {
+  transform: rotate(-2deg);
+}
+.strip a:nth-child(5n + 3) img {
+  transform: rotate(8deg);
+}
+.strip a:nth-child(5n + 4) img {
+  transform: rotate(-11deg);
+}
+.strip a:nth-child(5n + 5) img {
+  transform: rotate(12deg);
+}

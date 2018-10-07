@@ -1,15 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <title>Get User Media Code Along!</title>
+  <title>SnAPIshots!</title>
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=KoHo" rel="stylesheet">
+  <!-- Photo Creds: https://www.pexels.com/@tyler-hendy-9620 -->
 </head>
+
 <body>
 
   <div class="photobooth">
+    <select class="effects" name="effect">
+      <option value="normal">Normal (No Effect)</option>
+      <option value="redEffect">Red Effect</option>
+      <option value="greenScreen">Green Screen</option>
+      <option value="glitchGhost">Glitch Ghost</option>
+      <option value="negative">Negative</option>
+    </select>
     <div class="controls">
-      <button onClick="takePhoto()">Take Photo</button>
       <div class="rgb">
         <label for="rmin">Red Min:</label>
         <input type="range" min=0 max=255 name="rmin">
@@ -32,7 +42,10 @@
       </div>
     </div>
 
+    <button class="trigger" onClick="takePhoto()">Take Photo</button>
+
     <canvas class="photo"></canvas>
+
     <video class="player"></video>
     <div class="strip"></div>
   </div>
@@ -42,4 +55,5 @@
   <script src="scripts.js"></script>
 
 </body>
+
 </html>

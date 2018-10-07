@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>PCOB4Events</title>
+</head>
+
+<body class="bod">
+  <h3>Propagation, Capturing, Once, and Bubbling for Events</h3>
+  <div class="one">
+    <pre>Area 1</pre>
+    <pre>{once: true}</pre>
+    <pre>1 (once)</pre>
+    <div class="two">
+      <pre>Area 2</pre>
+      <pre>e.stopPropagation();</pre>
+      <pre>2</pre>
+      <div class="three">
+        <pre>Area 3</pre>
+        <pre>{capture: true}</pre>
+        <pre>1 -> 2 -> 3</pre>
+        <div class="four">
+          <pre>Area 4</pre>
+          <pre>{capture: false}</pre>
+          <pre>4 -> 3 -> 2 -> 1</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <style>
+    html {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+    }
+
+    *,
+    *:before,
+    *:after {
+      box-sizing: inherit;
+    }
+
+    h3 {
+      font-family: 'Courier New', Courier, monospace;
+      text-align: center;
+      background-color: mintcream;
+      margin: 0;
+      padding: 15px;
+      border-bottom: 2px solid black
+    }
+
+    div {
+      width: 100%;
+      padding: 50px;
+      transition: background 0.5s linear;
+    }
+
+    .one {
+      background: azure;
+      box-shadow: inset 0 0 15px black;
+    }
+
+    .two {
+      background: honeydew;
+      box-shadow: inset 0 0 15px black;
+    }
+
+    .three {
+      background: ivory;
+      box-shadow: inset 0 0 15px black;
+    }
+
+    .four {
+      background: mistyrose;
+      box-shadow: inset 0 0 15px black;
+    }
+  </style>
+
+  <script>
+    const divs = document.querySelectorAll('div');
+    console.log(divs)
+    const options = [
+      {
+        once: true
+      },
+      {
+        //Pass default options for Area 2
+      },
+      {
+        capture: true
+      },
+      {
+        capture: false
+      }
+    ];
+
+    function genRand(num) {
+      return Math.floor(Math.random() * num);
+    }
+
+    function recolor(e) {
+      const minRGB = 150;
+      this.style.background = `rgb(
+          ${genRand(255 - minRGB) + minRGB},
+          ${genRand(255 - minRGB) + minRGB},
+          ${genRand(255 - minRGB) + minRGB}
+          )`
+      if (this.classList.value === 'two') e.stopPropagation();
+    }
+
+    divs.forEach((div, i) => {
+      div.addEventListener('click', recolor, options[i])
+    }
+    );
+
+    /*
+    In the Element.addEventListener() method, the parameters are:
+      1) event
+      2) callback functio
+      3) options object
+
+    Within the options object, you can pass:
+      capture (boolean) - true processes callback on the way down (background -> foreground)
+      once (boolean) - true unbinds the eventListener after a single use.
+    */
+
+
+  </script>
+</body>
+
+</html>

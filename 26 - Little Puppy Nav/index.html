@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Little Puppy Nav</title>
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+</head>
+
+<body>
+  <h1>A Smooth Introduction</h1>
+  <nav class="top">
+    <div class="dropdownBackground">
+      <span class="arrow"></span>
+    </div>
+
+    <ul class="cool">
+      <li>
+        <a href="#">About Me</a>
+        <div class="dropdown dropdown1">
+          <div class="bio">
+            <img src="https://media.licdn.com/dms/image/C4D03AQEf1vmYOpm6-g/profile-displayphoto-shrink_200_200/0?e=1544659200&v=beta&t=C4-VCEOOaykdoTLjStzzDB_SOIlj1niqInwQmsVysnU"
+              alt="Leander Rodrigues Profile Picture">
+            <p>Leander Rodrigues is just a dude who's really into web development. I'm super into JavaScript, and try
+              to branch out that knowledge to things like Node.js and React.js. Am I doing this in school? No! That
+              would be too easy wouldn't it?!</p>
+          </div>
+        </div>
+      </li>
+      <li>
+        <a href="#">Courses</a>
+        <ul class="dropdown courses">
+          <li>
+            <span class="code">I've taken these courses by </span>
+            <a href="https://wesbos.com">Wes</a>!
+          </li>
+          <li>
+            <span class="code">JS30</span>
+            <a href="https://javascript30.com">JavaScript 30</a>
+          </li>
+          <li>
+            <span class="code">RFB</span>
+            <a href="https://advancedreact.com">React For Beginners</a>
+          </li>
+          <li>
+            <span class="code">RFB2</span>
+            <a href="https://ReactForBeginners.com">Advanced React</a>
+          </li>
+          <li>
+            <span class="code">NODE</span>
+            <a href="https://LearnNode.com">Learn Node</a>
+          </li>
+          <li>
+            <span class="code">LRX</span>
+            <a href="http://LearnRedux.com">Learn Redux</a>
+          </li>
+          <li>
+            <span class="code">MMD</span>
+            <a href="http://MasteringMarkdown.com">Mastering Markdown</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">Other Links</a>
+        <ul class="dropdown dropdown3">
+          <li><a class="button" href="https://twitter.com/LeeAndHer">Twitter</a></li>
+          <li><a class="button" href="https://www.facebook.com/leeandher">Facebook</a></li>
+          <li><a class="button" href="https://github.com/leeandher">GitHub</a></li>
+          <li><a class="button" href="https://leander.xyz/blog">Blog</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+  <p>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa minima, inventore nemo assumenda asperiores dolor.
+    Hic placeat, veritatis facilis architecto ipsam labore ad. A aspernatur unde dolores vel quod dignissimos quasi
+    repudiandae atque quo fugiat. Veritatis reiciendis totam fuga obcaecati pariatur eaque repudiandae doloremque
+    ipsam.
+  </p>
+
+  <p>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque pariatur nisi veritatis quod, repellat dolorem
+    debitis similique error quibusdam quam nesciunt officiis dignissimos non odit qui quaerat molestias perspiciatis
+    velit porro omnis. Fugiat ad iure, fuga laboriosam nostrum consectetur eius soluta nihil unde consequuntur ducimus
+    dolor vero suscipit reiciendis porro blanditiis ex officiis officia eum eveniet deserunt voluptatum tenetur sint
+    doloribus? Maxime possimus aut eaque quos alias repudiandae quia dolore natus aliquid rerum commodi magnam fugiat,
+    laboriosam consequuntur non voluptatum nihil nesciunt exercitationem amet dolorem debitis totam nam ipsam. Non quae
+    minima incidunt fugiat officia est molestiae, tempora commodi voluptatibus?
+  </p>
+
+  <p>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur deserunt laudantium fugit voluptatum quae
+    suscipit inventore corrupti cupiditate aspernatur! Labore magnam quod aliquid nulla maxime deserunt vel veniam
+    dignissimos ullam nemo atque fugiat, iure suscipit animi perferendis velit, neque explicabo! Voluptates ipsa
+    placeat impedit ipsam ad dolorem, quisquam fuga provident reprehenderit veniam, temporibus expedita perspiciatis
+    molestiae explicabo? Obcaecati vero exercitationem magni qui, assumenda praesentium tenetur a nemo enim minima
+    odio. Perferendis, corporis! Illum nisi accusamus unde cupiditate maxime temporibus eveniet?
+  </p>
+
+  <style>
+    html {
+      box-sizing: border-box;
+      font-family: 'Josefin Sans', sans-serif;
+    }
+
+    *,
+    *:before,
+    *:after {
+      box-sizing: inherit;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: linear-gradient(#457cac, #000428);
+    }
+
+    h1 {
+      margin-top: 0;
+      padding-top: .8em;
+      text-align: center;
+      color: white;
+      font-style: italic;
+    }
+
+    nav {
+      position: relative;
+      perspective: 600px;
+    }
+
+    .cool>li>a {
+      color: white;
+      text-decoration: none;
+      font-size: 20px;
+      background: rgba(0, 0, 0, 0.2);
+      padding: 10px 20px;
+      display: inline-block;
+      margin: 20px;
+      border-radius: 5px;
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+
+    }
+
+    p {
+      max-width: 720px;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.8);
+      margin: 30px auto;
+      border-radius: 20px;
+      line-height: 2em;
+    }
+
+    .cool>li {
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+
+    .dropdown {
+      opacity: 0;
+      position: absolute;
+      overflow: hidden;
+      padding: 20px;
+      top: -20px;
+      border-radius: 2px;
+      transition: all 0.5s;
+      transform: translateY(100px);
+      will-change: opacity;
+      display: none;
+    }
+
+    .trigger-enter .dropdown {
+      display: block;
+    }
+
+    .trigger-enter-active .dropdown {
+      opacity: 1;
+    }
+
+
+
+    .dropdownBackground {
+      width: 100px;
+      height: 100px;
+      position: absolute;
+      background: #fff;
+      border-radius: 4px;
+      box-shadow: 0 50px 100px rgba(50, 50, 93, .1), 0 15px 35px rgba(50, 50, 93, .15), 0 5px 15px rgba(0, 0, 0, .1);
+      transition: all 0.3s, opacity 0.1s, transform 0.2s;
+      transform-origin: 50% 0;
+      display: flex;
+      justify-content: center;
+      opacity: 0;
+    }
+
+    .dropdownBackground.open {
+      opacity: 1;
+    }
+
+    .arrow {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      display: block;
+      background: white;
+      transform: translateY(-50%) rotate(45deg);
+    }
+
+    .bio {
+      min-width: 500px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      line-height: 1.7;
+    }
+
+    .bio img {
+      float: left;
+      margin-right: 20px;
+    }
+
+    .courses {
+      min-width: 300px;
+    }
+
+    .courses li {
+      padding: 10px 0;
+      display: block;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    }
+
+    .dropdown a {
+      text-decoration: none;
+      font-weight: bold;
+      color: #457cac;
+    }
+
+    a.button {
+      background: black;
+      display: block;
+      padding: 10px;
+      color: white;
+      margin-bottom: 10px;
+    }
+
+
+    /* Matches Twitter, TWITTER, twitter, tWitter, TWiTTeR... */
+    .button[href*=twitter] {
+      background: #019FE9;
+    }
+
+    .button[href*=facebook] {
+      background: #3B5998;
+    }
+
+    .button[href*=blog] {
+      background: #00cccc;
+    }
+  </style>
+
+  <script>
+    const triggers = document.querySelectorAll('.cool > li');
+    const background = document.querySelector('.dropdownBackground');
+    const nav = document.querySelector('.top');
+
+    function handleEnter() {
+      this.classList.add('trigger-enter')
+      setTimeout(() => this.classList.contains('trigger-enter') && this.classList.add('trigger-enter-active'), 150)
+      background.classList.add('open')
+
+      const dropdown = this.querySelector('.dropdown');
+      const dropdownCoords = dropdown.getBoundingClientRect();
+      const navCoords = nav.getBoundingClientRect();
+
+      console.clear();
+      console.log(dropdownCoords);
+
+      let { height, width, top, left } = dropdownCoords;
+      top -= navCoords.top;
+      left -= navCoords.left;
+
+      background.style.setProperty('width', `${width}px`);
+      background.style.setProperty('height', `${height}px`);
+      background.style.setProperty('transform', `translate(${left}px, ${top}px)`);
+    }
+
+    function handleLeave() {
+      this.classList.remove('trigger-enter', 'trigger-enter-active')
+      background.classList.remove('open')
+    }
+
+    triggers.forEach(trigger => trigger.addEventListener('mouseenter', handleEnter))
+    triggers.forEach(trigger => trigger.addEventListener('mouseleave', handleLeave))
+
+  </script>
+
+</body>
+
+</html>

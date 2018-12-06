@@ -1,105 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Konami Coding</title>
-</head>
-<body>
-  <div class="wrapper">
-    <p class="text">
-      コナミコマンド<br />
-      (Konami Command)
-    </p>
-  </div>
-  <style>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Konami Coding</title>
+  </head>
 
-    @import url('https://fonts.googleapis.com/css?family=Stylish');
-    * {
-      margin: 0;
-      font-family: 'Stylish';
-      overflow: hidden;
-    }
-    html {
-      background: rgb(12,12,12);
-    }
-    body {
-      text-align: center;
-      transition: all 2s;
-    }
-    body.code {
-      -webkit-animation: spin 2s infinite forwards linear;
-      animation: spin 2s infinite forwards linear
-    }
-    body.code .text {
-      color: rgb(100,200,100) !important;
-    }
-    .wrapper {
-      display: flex;
-      flex-direction: row wrap;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-    .text {
-      letter-spacing: 5px;
-      transition: 0.5s;
-      position: relative;
-      padding: 25px;
-      color: rgb(240,240,240);
-      font-size: 40px;
-      flex: 1;
-      margin: 20% 10%;
-      transition: all 0.03s;
-    }
-    @-webkit-keyframes spin {
-      0% {
-        transform: rotate(0deg) scale(1);
-        filter: hue-rotate(0deg);
-      }
-      50% {transform: rotate(180deg) scale(2);}
-      100% {
-        transform: rotate(360deg) scale(1);
-        filter: hue-rotate(360deg);
-      }
-    }
-    @keyframes spin {
-      0% {
-        transform: rotate(0deg) scale(1);
-        filter: hue-rotate(0deg);
-      }
-      50% {transform: rotate(180deg) scale(2);}
-      100% {
-        transform: rotate(360deg) scale(1);
-        filter: hue-rotate(360deg);
-      }
-    }
-  </style>
-  <script>
-    const userCode = [];
-    const secretCode = [
-      'ArrowUp',
-      'ArrowUp',
-      'ArrowDown',
-      'ArrowDown',
-      'ArrowLeft',
-      'ArrowRight',
-      'ArrowLeft',
-      'ArrowRight',
-      'b',
-      'a',
-      'Enter'
-    ]
-    window.addEventListener('keyup', (e) => {
-      userCode.push(e.key);
-      userCode.splice(-secretCode.length-1, userCode.length-secretCode.length);
-      if (userCode.join('').includes(secretCode.join(''))) inputAccepted();
-      console.log(userCode);
-    })
+  <body>
+    <div class="wrapper">
+      <p class="text">
+        コナミコマンド<br />
+        (Konami Command)
+      </p>
+    </div>
+    <style>
+      @import url("https://fonts.googleapis.com/css?family=Stylish");
 
-    function inputAccepted() {
-      document.querySelector('body').classList.add('code')
-    }
-  </script>
-</body>
+      * {
+        margin: 0;
+        font-family: "Stylish";
+        overflow: hidden;
+      }
+
+      html {
+        background: rgb(12, 12, 12);
+      }
+
+      body {
+        text-align: center;
+        transition: all 2s;
+      }
+
+      body.code {
+        -webkit-animation: spin 2s infinite forwards linear;
+        animation: spin 2s infinite forwards linear;
+      }
+
+      body.code .text {
+        color: rgb(100, 200, 100) !important;
+      }
+
+      .wrapper {
+        display: flex;
+        flex-direction: row wrap;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .text {
+        letter-spacing: 5px;
+        transition: 0.5s;
+        position: relative;
+        padding: 25px;
+        color: rgb(240, 240, 240);
+        font-size: 40px;
+        flex: 1;
+        margin: 20% 10%;
+        transition: all 0.03s;
+      }
+
+      @-webkit-keyframes spin {
+        0% {
+          transform: rotate(0deg) scale(1);
+          filter: hue-rotate(0deg);
+        }
+
+        50% {
+          transform: rotate(180deg) scale(2);
+        }
+
+        100% {
+          transform: rotate(360deg) scale(1);
+          filter: hue-rotate(360deg);
+        }
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg) scale(1);
+          filter: hue-rotate(0deg);
+        }
+
+        50% {
+          transform: rotate(180deg) scale(2);
+        }
+
+        100% {
+          transform: rotate(360deg) scale(1);
+          filter: hue-rotate(360deg);
+        }
+      }
+    </style>
+    <script>
+      const userCode = [];
+      const secretCode = [
+        "ArrowUp",
+        "ArrowUp",
+        "ArrowDown",
+        "ArrowDown",
+        "ArrowLeft",
+        "ArrowRight",
+        "ArrowLeft",
+        "ArrowRight",
+        "b",
+        "a",
+        "Enter"
+      ];
+      window.addEventListener("keyup", e => {
+        userCode.push(e.key);
+        userCode.splice(
+          -secretCode.length - 1,
+          userCode.length - secretCode.length
+        );
+        if (userCode.join("").includes(secretCode.join(""))) inputAccepted();
+        console.log(userCode);
+      });
+
+      function inputAccepted() {
+        document.querySelector("body").classList.add("code");
+      }
+    </script>
+  </body>
 </html>
